@@ -73,8 +73,9 @@ static void servoWrite(uint8_t ch, uint16_t us)
             PWM.setDuty(pwmChannels[ch], constrain(us, 1000, 2000) - 1000);
         }
         else
-        {
-            if (ch != 2) us = fmap(us, 988, 2012, 700, 2300);
+        {  
+            //  ИЗМЕНЕНИЕ ДИАПАЗОНА ШИМ с 988 - 2012 на 700 - 2300
+            if (ch != 2) us = fmap(us, 988, 2012, 700, 2300); 
             PWM.setMicroseconds(pwmChannels[ch], us / (chConfig->val.narrow + 1));
         }
     }
